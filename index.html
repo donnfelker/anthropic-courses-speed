@@ -30,7 +30,7 @@
     justify-content: center;
     padding: 2rem;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   body::before {
@@ -263,11 +263,11 @@
   <div class="badge">Bookmarklet</div>
 
   <h1><span>Anthropic Courses</span> Playback Speed</h1>
-  <p class="subtitle">One-click speed override for Anthropic Courses videos. Prompts for a custom playback rate with a 1.75× default.</p>
+  <p class="subtitle">The default video player only offers a few fixed speeds — 0.5×, 0.75×, 1×, 1.25×, 1.5×, and 2× — which might not be the pace you want. This bookmarklet lets you fine-tune the playback rate to any value, like 1.75×.</p>
 
   <div class="install-zone">
     <a class="bookmarklet-link"
-       href="javascript:void(function(){var s=prompt('Playback speed:','1.75');if(s){sessionStorage.setItem('video-playback-rate',s);var t=document.createElement('div');t.textContent='✓ Speed set to '+s+'x';t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:%23D97857;color:%23fff;padding:10px 20px;border-radius:8px;font:14px/1 sans-serif;z-index:999999;opacity:1;transition:opacity .5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0';setTimeout(function(){t.remove()},500)},1500)}}())">
+       href="javascript:void(function(){var t=document.createElement('div');t.style.cssText='position:fixed;top:20px;right:20px;color:%23fff;padding:10px 20px;border-radius:8px;font:14px/1 sans-serif;z-index:999999;opacity:1;transition:opacity .5s';function show(m,c){t.textContent=m;t.style.background=c;document.body.appendChild(t);setTimeout(function(){t.style.opacity='0';setTimeout(function(){t.remove()},500)},2000)}if(location.hostname!=='anthropic.skilljar.com'){show('✗ This only works on anthropic.skilljar.com','%23c0392b');return}var s=prompt('Playback speed:','1.75');if(s){sessionStorage.setItem('video-playback-rate',s);location.reload()}}())">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="5 3 19 12 5 21 5 3"/>
       </svg>
@@ -287,7 +287,11 @@
     </li>
     <li>
       <span class="step-num">3</span>
-      <span><strong>Visit any video page</strong> and click the bookmark — enter your desired speed and hit OK</span>
+      <span><strong>Navigate to an Anthropic Course</strong> — you must be on the course page before activating, e.g. <a href="https://anthropic.skilljar.com/claude-code-in-action" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;" target="_blank">Claude Code in Action</a></span>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <span><strong>Click the bookmark</strong> — enter your desired speed, hit OK, and the page will auto-refresh with your new rate</span>
     </li>
   </ul>
 
@@ -295,13 +299,13 @@
 
   <details class="code-section">
     <summary>› View source code</summary>
-    <div class="code-block" id="codeBlock">javascript:void(function(){var s=prompt('Playback speed:','1.75');if(s){sessionStorage.setItem('video-playback-rate',s);var t=document.createElement('div');t.textContent='✓ Speed set to '+s+'x';t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:%23D97857;color:%23fff;padding:10px 20px;border-radius:8px;font:14px/1 sans-serif;z-index:999999;opacity:1;transition:opacity .5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0';setTimeout(function(){t.remove()},500)},1500)}}())
+    <div class="code-block" id="codeBlock">javascript:void(function(){var t=document.createElement('div');t.style.cssText='position:fixed;top:20px;right:20px;color:%23fff;padding:10px 20px;border-radius:8px;font:14px/1 sans-serif;z-index:999999;opacity:1;transition:opacity .5s';function show(m,c){t.textContent=m;t.style.background=c;document.body.appendChild(t);setTimeout(function(){t.style.opacity='0';setTimeout(function(){t.remove()},500)},2000)}if(location.hostname!=='anthropic.skilljar.com'){show('✗ This only works on anthropic.skilljar.com','%23c0392b');return}var s=prompt('Playback speed:','1.75');if(s){sessionStorage.setItem('video-playback-rate',s);location.reload()}}())
       <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('codeBlock').firstChild.textContent.trim());this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
     </div>
   </details>
 </div>
 
-<p class="footer">Works on any site that reads sessionStorage "video-playback-rate"</p>
+<p class="footer">Works on Anthropic Courses at anthropic.skilljar.com</p>
 
 </body>
 </html>
